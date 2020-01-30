@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 const app = express();
 
+// mongodb+srv://rajeev333:rajeev333@earth-sjkt1.mongodb.net/test?retryWrites=true&w=majority
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb://localhost:27017/earth', {
@@ -15,6 +17,10 @@ const connectDB = async () => {
     process.exit(1);
   }
 }
+
+connectDB();
+
+app.use(cors());
 
 //for body parser
 app.use(express.json({extended: false}));
